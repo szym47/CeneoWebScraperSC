@@ -1,0 +1,22 @@
+{%  extends 'base.html' %}
+
+{% block content %}
+    <h2 class="text-center mt-3 mb-3">Estrakcja opinii</h2>
+    <form action="" method="post">
+        <div class="row g-3 align-items-center">
+            <div class="col-auto">
+            <label for="product_id" class="col-form-label">Kod produktu</label>
+            </div>
+            <div class="col-auto">
+            <input type="text" name="product_id" id="product_id" class="form-control" aria-describedby="idHelpInline" placeholder=" Podaj kod produktu">
+            </div>
+            <div class="col-auto">
+            <span id="idHelpInline" class="form-text"> Kod produktu składa się z 8-10 cyfr.
+            </span>
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-danger">Pobierz opinie</button>
+            </div>
+        </div>
+    </form>
+{% endblock %}

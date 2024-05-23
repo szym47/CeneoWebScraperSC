@@ -1,7 +1,13 @@
 {%  extends 'base.html' %}
-
 {% block content %}
     <h2 class="text-center mt-3 mb-3">Estrakcja opinii</h2>
+
+    {% if error is defined %}
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong> <i class="bi bi-exclamation-diamond-fill"></i>Uawga!</strong>{{error}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endif %}
     <form action="" method="post">
         <div class="row g-3 align-items-center">
             <div class="col-auto">

@@ -14,6 +14,7 @@ def index():
     return render_template("index.html")
 
 @app.route('/extract', methods = ['POST', 'GET'])
+@app.route('/extract', methods = ['POST', 'GET'])
 def extract():
     if request.method == "POST":
         product_id = request.form.get("product_id")

@@ -1,5 +1,34 @@
 {%  extends 'base.html' %}
 
 {% block content %}
-    <p>To jest strona produktu {{product_id}}</p>
+    <h2 class="text-center mt-3 mb-3">To jest strona produktu {{product_id}}</h2>
+    <div>
+        <h3>{{product.product_name}}</h3>
+        <p><strong>Liczba opinii:</strong> {{product.opinions_count}}</p>
+        <p><strong>Liczba zalet:</strong> {{product.pros_count}}</p>
+        <p><strong>Liczba wad:</strong> {{product.cons_count}}</p>
+        <p><strong>Średnia ocena:</strong> {{product.average_stars}}</p>
+
+        <h4>Rozkład gwiazdek:</h4>
+        <ul>
+            {%for star, count in product.stars_distribution.items()%}
+                <li><strong>{{star}} gwiazdki: </strong>{{count}}</li>
+            {%endfor%}
+        </ul>
+
+        <h4>Rekomendacje:</h4>
+        <ul>
+            {% for recommendation, count in product.recommendations_distribution.items() %}
+                <li><strong> {{recommendation}}: </strong>{{count}}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+
+    {% if error is defined %}
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong> <i class="bi bi-exclamation-diamond-fill"></i>Uawga!</strong>{{error}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endif %}
 {% endblock %}

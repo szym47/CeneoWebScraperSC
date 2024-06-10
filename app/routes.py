@@ -14,7 +14,6 @@ def index():
     return render_template("index.html")
 
 @app.route('/extract', methods = ['POST', 'GET'])
-@app.route('/extract', methods = ['POST', 'GET'])
 def extract():
     if request.method == "POST":
         product_id = request.form.get("product_id")
@@ -81,6 +80,20 @@ def about():
 
 @app.route('/product/<product_id>')
 def product(product_id):
+    product_file_path = os.path.join('app/products', f'{product_id}.json')
+    product_data = None
+    try:
+        with open(product_file_path, 'r', encoding='utf-8') as file:
+            product_data = json.load(file)
+    except FileNotFoundError:
+        f"Product with ID {product_id} not found"
+    except json.JSONDecodeError:
+        f"Error decoding JSON for product with ID {product_id}"
+    if product_data is None:
+        f"Unexpected error for product with ID {product_id}"
+
+    return render_template("product.html", product=product_data,product_id=product_id)
+
     return render_template("product.html", product_id=product_id)
 
 @app.route('/product/download_json/<product_id>')

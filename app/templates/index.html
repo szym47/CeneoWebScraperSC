@@ -1,5 +1,53 @@
-{%  extends 'base.html' %}
+{% extends 'base.html' %}
 
 {% block content %}
-    <p>To jest strona główna</p>
+    <header class="main-header">
+        <h1>Ceneo Web Scraper</h1>
+        <p>Projekt aplikacji webowej do pobierania i analizy opinii o produktach z serwisu Ceneo.pl</p>
+    </header>
+
+    <div class="content-wrapper">
+        <div class="left-column">
+            <section>
+                <h2>O projekcie</h2>
+                <p>
+                    Ceneo Web Scraper to aplikacja internetowa stworzona w języku Python z wykorzystaniem frameworka Flask.
+                    Umożliwia pobieranie opinii użytkowników dotyczących wybranych produktów z serwisu <strong>Ceneo.pl</strong>,
+                    ich analizę oraz prezentację w przejrzystej formie graficznej i tabelarycznej.
+                </p>
+            </section>
+
+            <section>
+                <h2>Jak to działa?</h2>
+                <ol>
+                    <li>Użytkownik wpisuje kod produktu (np. <code>123456</code>).</li>
+                    <li>Program pobiera dane z Ceneo.pl i zapisuje je lokalnie w pliku JSON.</li>
+                    <li>Opinie są przetwarzane i wyświetlane w czytelnej formie.</li>
+                    <li>Użytkownik może przejrzeć statystyki, dane surowe i wykresy.</li>
+                    <li>Możliwe jest również usunięcie zapisanych produktów z bazy lokalnej.</li>
+                </ol>
+            </section>
+        </div>
+
+        <div class="right-column">
+            <section>
+                <h2>Funkcjonalności</h2>
+                <ul>
+                    <li>Wyszukiwanie produktów na podstawie kodu ID z Ceneo.pl</li>
+                    <li>Pobieranie opinii użytkowników (autor, ocena, data, rekomendacja, plusy/minusy, treść)</li>
+                    <li>Zapis opinii w formacie JSON</li>
+                    <li>Wyświetlanie podstawowych statystyk (średnia ocena, liczba opinii itd.)</li>
+                    <li>Prezentacja danych w formie wykresów</li>
+                    <li>Możliwość przeglądania pobranych produktów i ich opinii</li>
+                    <li>Usuwanie pobranych danych</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Rozpocznij</h2>
+                <p>Aby rozpocząć, wybierz opcję z menu lub przejdź do formularza dodawania nowego produktu.</p>
+                <a href="{{ url_for('extract') }}" class="button">Dodaj produkt</a>
+            </section>
+        </div>
+    </div>
 {% endblock %}

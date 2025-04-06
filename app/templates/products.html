@@ -4,10 +4,14 @@
     <h2 class="text-center mt-3 mb-3">Lista produktów</h2>
 
     {% for product in products %}
-    <ul><div>
-        <h3><a href="{{ url_for('product', product_id=product.product_id) }}">{{ product.product_name }}</a></h3>
-        </div>
+    <ul>
+        <li>
+            <div>
+                <h3><a href="{{ url_for('product', product_id=product.product_id) }}">{{ product.product_name }}</a></h3>
+            </div>
+        </li>
     </ul>
+    
     {% endfor %}
 
 

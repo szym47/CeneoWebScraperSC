@@ -1,34 +1,51 @@
-{%  extends 'base.html' %}
-
+{% extends 'base.html' %}
 {% block content %}
-    <h2 class="text-center mt-3 mb-3">To jest strona produktu {{product_id}}</h2>
-    <div>
-        <h3>{{product.product_name}}</h3>
-        <p><strong>Liczba opinii:</strong> {{product.opinions_count}}</p>
-        <p><strong>Liczba zalet:</strong> {{product.pros_count}}</p>
-        <p><strong>Liczba wad:</strong> {{product.cons_count}}</p>
-        <p><strong>Średnia ocena:</strong> {{product.average_stars}}</p>
 
-        <h4>Rozkład gwiazdek:</h4>
-        <ul>
-            {%for star, count in product.stars_distribution.items()%}
-                <li><strong>{{star}} gwiazdki: </strong>{{count}}</li>
-            {%endfor%}
-        </ul>
-
-        <h4>Rekomendacje:</h4>
-        <ul>
-            {% for recommendation, count in product.recommendations_distribution.items() %}
-                <li><strong> {{recommendation}}: </strong>{{count}}</li>
-            {% endfor %}
-        </ul>
+<div class="product-container">
+    <div class="product-header">
+        <h2>Strona produktu: {{product.product_name}}</h2>
+        <p class="product-id">ID: {{product_id}}</p>
     </div>
+
+    <div class="product-content">
+        <!-- Lewa kolumna -->
+        <div class="product-card">
+            <h4>Statystyki:</h4>
+            <ul class="stat-list">
+                <li><strong>Liczba opinii:</strong> {{product.opinions_count}}</li>
+                <li><strong>Zalety:</strong> {{product.pros_count}}</li>
+                <li><strong>Wady:</strong> {{product.cons_count}}</li>
+                <li><strong>Średnia ocena:</strong> {{product.average_stars}}</li>
+            </ul>
+            <h4 class="mt-4">Rekomendacje:</h4>
+            <ul class="stat-list">
+                {% for recommendation, count in product.recommendations_distribution.items() %}
+                    <li><strong>{{recommendation}}:</strong> {{count}}</li>
+                {% endfor %}
+            </ul>
+
+        </div>
+
+        <!-- Prawa kolumna -->
+        <div class="product-insights">
+            <h4>Rozkład gwiazdek:</h4>
+            <ul class="stat-list">
+                {% for star, count in product.stars_distribution.items() %}
+                    <li>
+                        <strong>{{star}} ⭐:</strong> {{count}}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
 
 
     {% if error is defined %}
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <strong> <i class="bi bi-exclamation-diamond-fill"></i>Uawga!</strong>{{error}}
+    <div class="alert alert-danger alert-dismissible fade show mt-4" role="alert">
+        <strong><i class="bi bi-exclamation-diamond-fill"></i> Uwaga!</strong> {{ error }}
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     {% endif %}
+</div>
 {% endblock %}

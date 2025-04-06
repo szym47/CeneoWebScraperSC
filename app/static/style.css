@@ -127,16 +127,16 @@ footer {
 
 .autorlist > div {
     margin-right: 10px;
-    padding: 5px;
     background-color: #e9ecef;
     border-radius: 5px;
     font-size: 0.9rem;
     color: #495057;
-    padding: 10px;
+    padding: 20px;
     width: 50%;
 }
 .autorlist > div >ul> li> span {
     color: #ff6400;
+    padding: 3px;
 }
 
 
